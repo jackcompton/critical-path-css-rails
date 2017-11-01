@@ -5,18 +5,18 @@ require 'critical_path_css/rails/config_loader'
 module CriticalPathCss
   CACHE_NAMESPACE = 'critical-path-css'
 
-  def self.generate(route)
+  def self.generate(route, expires_in: nil)
     ::Rails.cache.write(
       route,
       CssFetcher.new(config).fetch_route(route),
       namespace: CACHE_NAMESPACE,
-      expires_in: nil
+      expires_in: expires_in
     )
   end
 
-  def self.generate_all
+  def self.generate_all(expires_in: nil)
     CssFetcher.new(config).fetch.each do |route, css|
-      ::Rails.cache.write(route, css, namespace: CACHE_NAMESPACE, expires_in: nil)
+      ::Rails.cache.write(route, css, namespace: CACHE_NAMESPACE, expires_in: expires_in)
     end
   end
 
