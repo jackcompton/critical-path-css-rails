@@ -10,6 +10,7 @@ end
 # HACK: npm install on bundle
 unless $npm_commands_hook_installed # rubocop:disable Style/GlobalVars
   Gem.pre_install do |installer|
+    puts installer.spec.name
     next true unless installer.spec.name == 'critical-path-css-rails'
     require_relative './ext/npm/install'
   end
