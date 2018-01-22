@@ -33,7 +33,7 @@ module CriticalPathCss
           #  '^\.regexWorksToo'
         ],
         # ms; abort critical CSS generation after this timeout
-        'timeout' => 30000,
+        'timeout' => 30_000,
         # set to true to throw on CSS errors (will run faster if no errors)
         'strict' => false,
         # characters; strip out inline base64 encoded resources larger than this
@@ -44,11 +44,6 @@ module CriticalPathCss
         'renderWaitTime' => 100,
         # set to false to load (external) JS (default: true)
         'blockJSRequests' => true,
-        # see `phantomjs --help` for the list of all available options
-        'phantomJsOptions' => {
-          'ignore-ssl-errors' => true,
-          'ssl-protocol' => 'tlsv1'
-        },
         'customPageHeaders' => {
           # use if getting compression errors like 'Data corrupted':
           'Accept-Encoding' => 'identity'
